@@ -18,12 +18,26 @@ import org.apache.commons.lang.StringUtils;
  */
 public abstract class Assert {
 
+    /**
+    * @Description: TODO 字符串检测
+    * @Param: [str, message]
+    * @return: void
+    * @Author: WillemGavin
+    * @Date: 2021/3/28 22:47
+    */
     public static void isBlank(String str, String message) {
         if (StringUtils.isBlank(str)) {
             throw new RRException(message);
         }
     }
 
+    /**
+    * @Description: TODO 对象检测
+    * @Param: [object, message]
+    * @return: void
+    * @Author: WillemGavin
+    * @Date: 2021/3/28 22:47
+    */
     public static void isNull(Object object, String message) {
         if (object == null) {
             throw new RRException(message);

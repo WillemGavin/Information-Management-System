@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.volunteer.modules.app.dao.ExamDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.volunteer.modules.app.entity.ExamEntity" id="examMap">
+        <result property="examId" column="exam_id"/>
+        <result property="examRank" column="exam_rank"/>
+        <result property="examTitle" column="exam_title"/>
+        <result property="examType" column="exam_type"/>
+        <result property="examOptions" column="exam_options"/>
+        <result property="standardAnswer" column="standard_answer"/>
+        <result property="taskId" column="task_id"/>
+    </resultMap>
+
+
+</mapper>

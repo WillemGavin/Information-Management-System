@@ -1,33 +1,26 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package io.volunteer.modules.app.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
-
+import lombok.Data;
 
 /**
  * 用户
- *
- * @author Mark sunlightcs@gmail.com
+ * 
+ * @author WillemGavin
+ * @email wangg20@fudan.edu.cn
+ * @date 2021-03-31 16:12:42
  */
 @Data
 @TableName("app_user")
-public class UserEntity implements Serializable {
+public class AppUserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 用户ID
+	 * 
 	 */
 	@TableId
 	private Long userId;
@@ -47,5 +40,17 @@ public class UserEntity implements Serializable {
 	 * 创建时间
 	 */
 	private Date createTime;
+	/**
+	 * 微信openid
+	 */
+	private String openid;
+	/**
+	 * 团队id
+	 */
+	private Integer teamId;
+	/**
+	 * 用户状态，0 未绑定团队，1 已绑定团队
+	 */
+	private Integer state;
 
 }
