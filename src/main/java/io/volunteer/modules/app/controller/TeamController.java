@@ -35,7 +35,7 @@ public class TeamController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("app:team:list")
+    @RequiresPermissions("volunteer:team:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = teamService.queryPage(params);
 
@@ -47,7 +47,7 @@ public class TeamController {
      * 信息
      */
     @RequestMapping("/info/{teamId}")
-    @RequiresPermissions("app:team:info")
+    @RequiresPermissions("volunteer:team:info")
     public R info(@PathVariable("teamId") Integer teamId){
 		TeamEntity team = teamService.getById(teamId);
 
@@ -58,7 +58,7 @@ public class TeamController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("app:team:save")
+    @RequiresPermissions("volunteer:team:save")
     public R save(@RequestBody TeamEntity team){
 		teamService.save(team);
 
@@ -69,7 +69,7 @@ public class TeamController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("app:team:update")
+    @RequiresPermissions("volunteer:team:update")
     public R update(@RequestBody TeamEntity team){
 		teamService.updateById(team);
 
@@ -80,7 +80,7 @@ public class TeamController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("app:team:delete")
+    @RequiresPermissions("volunteer:team:delete")
     public R delete(@RequestBody Integer[] teamIds){
 		teamService.removeByIds(Arrays.asList(teamIds));
 

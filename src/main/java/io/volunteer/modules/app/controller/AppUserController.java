@@ -35,7 +35,7 @@ public class AppUserController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("app:appuser:list")
+    @RequiresPermissions("volunteer:appuser:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = appUserService.queryPage(params);
 
@@ -47,7 +47,7 @@ public class AppUserController {
      * 信息
      */
     @RequestMapping("/info/{userId}")
-    @RequiresPermissions("app:appuser:info")
+    @RequiresPermissions("volunteer:appuser:info")
     public R info(@PathVariable("userId") Long userId){
 		AppUserEntity appUser = appUserService.getById(userId);
 
@@ -58,7 +58,7 @@ public class AppUserController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("app:appuser:save")
+    @RequiresPermissions("volunteer:appuser:save")
     public R save(@RequestBody AppUserEntity appUser){
 		appUserService.save(appUser);
 
@@ -69,7 +69,7 @@ public class AppUserController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("app:appuser:update")
+    @RequiresPermissions("volunteer:appuser:update")
     public R update(@RequestBody AppUserEntity appUser){
 		appUserService.updateById(appUser);
 
@@ -80,7 +80,7 @@ public class AppUserController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("app:appuser:delete")
+    @RequiresPermissions("volunteer:appuser:delete")
     public R delete(@RequestBody Long[] userIds){
 		appUserService.removeByIds(Arrays.asList(userIds));
 

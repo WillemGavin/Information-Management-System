@@ -1,11 +1,6 @@
 {
   "properties": [
     {
-      "name": "spring.wechat.apppid",
-      "type": "java.lang.String",
-      "description": "Description for spring.wechat.apppid."
-    },
-    {
       "name": "spring.wechat.appsecret",
       "type": "java.lang.String",
       "description": "Description for spring.wechat.appsecret."
@@ -19,5 +14,10 @@
       "name": "spring.wechat.callback",
       "type": "java.lang.String",
       "description": "Description for spring.wechat.callback."
+    },
+    {
+      "name": "spring.wechat.appid",
+      "type": "java.lang.String",
+      "description": "Description for spring.wechat.appid."
     }
   ] }

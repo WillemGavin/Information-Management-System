@@ -35,7 +35,7 @@ public class AnswerController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("app:answer:list")
+    @RequiresPermissions("volunteer:answer:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = answerService.queryPage(params);
 
@@ -47,7 +47,7 @@ public class AnswerController {
      * 信息
      */
     @RequestMapping("/info/{examId}")
-    @RequiresPermissions("app:answer:info")
+    @RequiresPermissions("volunteer:answer:info")
     public R info(@PathVariable("examId") Integer examId){
 		AnswerEntity answer = answerService.getById(examId);
 
@@ -58,7 +58,7 @@ public class AnswerController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("app:answer:save")
+    @RequiresPermissions("volunteer:answer:save")
     public R save(@RequestBody AnswerEntity answer){
 		answerService.save(answer);
 
@@ -69,7 +69,7 @@ public class AnswerController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("app:answer:update")
+    @RequiresPermissions("volunteer:answer:update")
     public R update(@RequestBody AnswerEntity answer){
 		answerService.updateById(answer);
 
@@ -80,7 +80,7 @@ public class AnswerController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("app:answer:delete")
+    @RequiresPermissions("volunteer:answer:delete")
     public R delete(@RequestBody Integer[] examIds){
 		answerService.removeByIds(Arrays.asList(examIds));
 

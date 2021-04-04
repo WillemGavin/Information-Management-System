@@ -26,6 +26,10 @@ public class TaskEntity implements Serializable {
 	@TableId
 	private Integer taskId;
 	/**
+	 * 活动名称
+	 */
+	private String taskName;
+	/**
 	 * 所读数据url
 	 */
 	private String bookUrl;
@@ -36,11 +40,11 @@ public class TaskEntity implements Serializable {
 	/**
 	 * 开始时间
 	 */
-	private Time startTime;
+	private Date startTime;
 	/**
 	 * 结束时间
 	 */
-	private Time endTime;
+	private Date endTime;
 	/**
 	 * 参与最大人数
 	 */

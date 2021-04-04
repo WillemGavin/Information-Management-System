@@ -35,7 +35,7 @@ public class TaskController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("app:task:list")
+    @RequiresPermissions("volunteer:task:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = taskService.queryPage(params);
 
@@ -47,7 +47,7 @@ public class TaskController {
      * 信息
      */
     @RequestMapping("/info/{taskId}")
-    @RequiresPermissions("app:task:info")
+    @RequiresPermissions("volunteer:task:info")
     public R info(@PathVariable("taskId") Integer taskId){
 		TaskEntity task = taskService.getById(taskId);
 
@@ -58,7 +58,7 @@ public class TaskController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("app:task:save")
+    @RequiresPermissions("volunteer:task:save")
     public R save(@RequestBody TaskEntity task){
 		taskService.save(task);
 
@@ -69,7 +69,7 @@ public class TaskController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("app:task:update")
+    @RequiresPermissions("volunteer:task:update")
     public R update(@RequestBody TaskEntity task){
 		taskService.updateById(task);
 
@@ -80,7 +80,7 @@ public class TaskController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("app:task:delete")
+    @RequiresPermissions("volunteer:task:delete")
     public R delete(@RequestBody Integer[] taskIds){
 		taskService.removeByIds(Arrays.asList(taskIds));
 

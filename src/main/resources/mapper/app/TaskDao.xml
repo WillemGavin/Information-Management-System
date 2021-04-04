@@ -6,6 +6,7 @@
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="io.volunteer.modules.app.entity.TaskEntity" id="taskMap">
         <result property="taskId" column="task_id"/>
+        <result property="taskName" column="task_name"/>
         <result property="bookUrl" column="book_url"/>
         <result property="tips" column="tips"/>
         <result property="startTime" column="start_time"/>

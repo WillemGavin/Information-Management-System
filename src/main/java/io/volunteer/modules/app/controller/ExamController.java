@@ -35,7 +35,7 @@ public class ExamController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("app:exam:list")
+    @RequiresPermissions("volunteer:exam:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = examService.queryPage(params);
 
@@ -47,7 +47,7 @@ public class ExamController {
      * 信息
      */
     @RequestMapping("/info/{examId}")
-    @RequiresPermissions("app:exam:info")
+    @RequiresPermissions("volunteer:exam:info")
     public R info(@PathVariable("examId") Integer examId){
 		ExamEntity exam = examService.getById(examId);
 
@@ -58,7 +58,7 @@ public class ExamController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("app:exam:save")
+    @RequiresPermissions("volunteer:exam:save")
     public R save(@RequestBody ExamEntity exam){
 		examService.save(exam);
 
@@ -69,7 +69,7 @@ public class ExamController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("app:exam:update")
+    @RequiresPermissions("volunteer:exam:update")
     public R update(@RequestBody ExamEntity exam){
 		examService.updateById(exam);
 
@@ -80,7 +80,7 @@ public class ExamController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("app:exam:delete")
+    @RequiresPermissions("volunteer:exam:delete")
     public R delete(@RequestBody Integer[] examIds){
 		examService.removeByIds(Arrays.asList(examIds));
 
