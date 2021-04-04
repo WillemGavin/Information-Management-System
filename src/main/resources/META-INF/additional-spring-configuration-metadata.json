@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "spring.wechat.apppid",
+      "type": "java.lang.String",
+      "description": "Description for spring.wechat.apppid."
+    },
+    {
+      "name": "spring.wechat.appsecret",
+      "type": "java.lang.String",
+      "description": "Description for spring.wechat.appsecret."
+    },
+    {
+      "name": "spring.redis.open",
+      "type": "java.lang.String",
+      "description": "Description for spring.redis.open."
+    },
+    {
+      "name": "spring.wechat.callback",
+      "type": "java.lang.String",
+      "description": "Description for spring.wechat.callback."
+    }
+  ] }

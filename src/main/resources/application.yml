@@ -39,7 +39,10 @@ spring:
     throw-exception-if-no-handler-found: true
 #  resources:
 #    add-mappings: false
-
+  wechat:
+    apppid: wx0b5a62e7a4e2f001
+    appsecret: c06b259b05d0ded343e4d642c4cf9945
+    callback: http://volunteer.free.idcfengye.com
 
 #mybatis
 mybatis-plus:
