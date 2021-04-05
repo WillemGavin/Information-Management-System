@@ -32,5 +32,8 @@ public class TeamEntity implements Serializable {
 	 * 活动id
 	 */
 	private Integer taskId;
-
+	/**
+	 * 活动名称
+	 */
+	private String taskName;
 }

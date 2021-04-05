@@ -1,5 +1,6 @@
 package io.volunteer.modules.app.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -15,6 +16,9 @@ import io.volunteer.modules.app.service.ExamService;
 
 @Service("examService")
 public class ExamServiceImpl extends ServiceImpl<ExamDao, ExamEntity> implements ExamService {
+
+    @Autowired
+    private  ExamDao examDao;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

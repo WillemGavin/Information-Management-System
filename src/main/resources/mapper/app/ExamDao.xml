@@ -9,10 +9,17 @@
         <result property="examRank" column="exam_rank"/>
         <result property="examTitle" column="exam_title"/>
         <result property="examType" column="exam_type"/>
+        <result property="examGrade" column="exam_grade"/>
         <result property="examOptions" column="exam_options"/>
         <result property="standardAnswer" column="standard_answer"/>
         <result property="taskId" column="task_id"/>
+        <result property="taskName" column="task_name"/>
     </resultMap>
 
-
+    <select id="getPage" resultMap="examMap">
+        select
+            exam_id, exam_rank, exam_title, exam_type, exam_grade, exam_options, standard_answer, task_name, volunteer_exam.task_id
+        from
+            volunteer_exam, volunteer_task
+    </select>
 </mapper>

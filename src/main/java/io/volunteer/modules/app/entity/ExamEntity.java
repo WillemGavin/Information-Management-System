@@ -37,6 +37,10 @@ public class ExamEntity implements Serializable {
 	 */
 	private Integer examType;
 	/**
+	 * 题目分值
+	 */
+	private Integer examGrade;
+	/**
 	 * 题目选项
 	 */
 	private String examOptions;
@@ -48,5 +52,8 @@ public class ExamEntity implements Serializable {
 	 * 活动id
 	 */
 	private Integer taskId;
-
+	/**
+	 * 活动Name
+	 */
+	private String taskName;
 }
