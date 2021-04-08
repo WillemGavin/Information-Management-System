@@ -1,6 +1,7 @@
 package io.volunteer.modules.app.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -58,10 +59,11 @@ public class AnswerController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("volunteer:answer:save")
-    public R save(@RequestBody AnswerEntity answer){
-		answerService.save(answer);
-
+//    @RequiresPermissions("volunteer:answer:save")
+    public R save(@RequestBody List<AnswerEntity> answers){
+        for (AnswerEntity answer: answers) {
+            answerService.saveAnswer(answer);
+        }
         return R.ok();
     }
 
@@ -81,8 +83,8 @@ public class AnswerController {
      */
     @RequestMapping("/delete")
     @RequiresPermissions("volunteer:answer:delete")
-    public R delete(@RequestBody Integer[] examIds){
-		answerService.removeByIds(Arrays.asList(examIds));
+    public R delete(@RequestBody Integer[] answerIds){
+		answerService.removeByIds(Arrays.asList(answerIds));
 
         return R.ok();
     }

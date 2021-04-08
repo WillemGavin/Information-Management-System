@@ -16,5 +16,7 @@ import java.util.Map;
 public interface AnswerService extends IService<AnswerEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    boolean saveAnswer(AnswerEntity answerEntity);
 }
 

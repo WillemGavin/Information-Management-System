@@ -20,13 +20,17 @@ public class AnswerEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * 答案id
+	 */
+	@TableId
+	private Integer answerId;
+	/**
 	 * 用户id
 	 */
 	private Integer userId;
 	/**
 	 * 题目id
 	 */
-	@TableId
 	private Integer examId;
 	/**
 	 * 题目回答

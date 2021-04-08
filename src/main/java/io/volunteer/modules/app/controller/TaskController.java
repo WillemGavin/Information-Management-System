@@ -35,7 +35,7 @@ public class TaskController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("volunteer:task:list")
+//    @RequiresPermissions("volunteer:task:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = taskService.queryPage(params);
 

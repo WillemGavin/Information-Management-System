@@ -5,6 +5,7 @@
 
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="io.volunteer.modules.app.entity.AnswerEntity" id="answerMap">
+        <result property="answerId" column="answer_id"/>
         <result property="userId" column="user_id"/>
         <result property="examId" column="exam_id"/>
         <result property="examAnswer" column="exam_answer"/>

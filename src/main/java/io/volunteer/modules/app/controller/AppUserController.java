@@ -5,11 +5,7 @@ import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.volunteer.modules.app.entity.AppUserEntity;
 import io.volunteer.modules.app.service.AppUserService;
@@ -47,7 +43,7 @@ public class AppUserController {
      * 信息
      */
     @RequestMapping("/info/{userId}")
-    @RequiresPermissions("volunteer:appuser:info")
+//    @RequiresPermissions("volunteer:appuser:info")
     public R info(@PathVariable("userId") Long userId){
 		AppUserEntity appUser = appUserService.getById(userId);
 
@@ -57,10 +53,10 @@ public class AppUserController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
-    @RequiresPermissions("volunteer:appuser:save")
+    @PostMapping("/save")
+//    @RequiresPermissions("volunteer:appuser:save")
     public R save(@RequestBody AppUserEntity appUser){
-		appUserService.save(appUser);
+		appUserService.saveOrUpdate(appUser);
 
         return R.ok();
     }
