@@ -56,6 +56,8 @@ public class ShiroConfig {
         filterMap.put("/sys/login", "anon");
         filterMap.put("/volunteer/appuser/save", "anon");
         filterMap.put("/volunteer/answer/save", "anon");
+        filterMap.put("/volunteer/answer/personRank", "anon");
+        filterMap.put("/volunteer/answer/teamRank", "anon");
         filterMap.put("/volunteer/task/list", "anon");
         filterMap.put("/swagger/**", "anon");
         filterMap.put("/v2/api-docs", "anon");

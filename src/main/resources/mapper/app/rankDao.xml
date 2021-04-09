@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.volunteer.modules.app.dao.RankDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="java.util.Map" id="rankMap">
+        <result property="userId" column="user_id"/>
+        <result property="mobile" column="mobile"/>
+        <result property="username" column="username"/>
+        <result property="teamName" column="team_answer"/>
+        <result property="teamId" column="team_id"/>
+        <result property="score" column="score"/>
+    </resultMap>
+
+    <select id="getPersonalRank" resultMap="rankMap">
+        select
+            app_user.user_id, mobile, username, team_name, app_user.team_id, SUM(grade) as score
+        from
+            volunteer_answer, app_user, volunteer_team
+        where volunteer_answer.user_id = app_user.user_id
+          and app_user.team_id = volunteer_team.team_id
+        group by user_id
+        order by score DESC
+    </select>
+
+    <select id="getTeamRank" resultMap="rankMap">
+        select
+            team_name, app_user.team_id, SUM(grade) as score
+        from
+            volunteer_answer, app_user, volunteer_team
+        where volunteer_answer.user_id = app_user.user_id
+          and app_user.team_id = volunteer_team.team_id
+        group by app_user.team_id
+        order by score DESC
+    </select>
+</mapper>

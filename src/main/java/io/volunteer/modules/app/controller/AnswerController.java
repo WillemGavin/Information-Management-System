@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import io.volunteer.modules.app.service.RankService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,8 @@ public class AnswerController {
     @Autowired
     private AnswerService answerService;
 
+    @Autowired
+    private RankService rankService;
     /**
      * 列表
      */
@@ -89,4 +92,13 @@ public class AnswerController {
         return R.ok();
     }
 
+    @RequestMapping("/personRank")
+    public R personRank(){
+        return R.ok().put("rank", rankService.getPersonalRank());
+    }
+
+    @RequestMapping("/teamRank")
+    public R teamRank(){
+        return R.ok().put("rank", rankService.getTeamRank());
+    }
 }
