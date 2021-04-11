@@ -1,5 +1,8 @@
 package io.volunteer.modules.app.service.impl;
 
+import io.volunteer.common.validator.Assert;
+import io.volunteer.modules.app.entity.UserEntity;
+import io.volunteer.modules.app.form.LoginForm;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -25,5 +28,18 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserDao, AppUserEntity> i
 
         return new PageUtils(page);
     }
+
+    @Override
+    public AppUserEntity queryByOpenId(String openId) {
+        return baseMapper.selectOne(new QueryWrapper<AppUserEntity>().eq("openId", openId));
+    }
+
+    @Override
+    public long login(String openId) {
+        AppUserEntity user = queryByOpenId(openId);
+        Assert.isNull(user, "用户不存在");
+        return user.getUserId();
+    }
+
 
 }

@@ -1,7 +1,9 @@
 package io.volunteer.modules.app.dao;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.volunteer.modules.app.entity.AppUserEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import io.volunteer.modules.app.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -13,5 +15,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface AppUserDao extends BaseMapper<AppUserEntity> {
-	
+
 }

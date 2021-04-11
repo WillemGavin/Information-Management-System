@@ -1,7 +1,12 @@
 package io.volunteer.modules.app.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import io.volunteer.common.utils.R;
+import io.volunteer.modules.app.entity.AppUserEntity;
+import io.volunteer.modules.app.service.AppUserService;
 import io.volunteer.modules.app.utils.HttpClientUtils;
+import io.volunteer.modules.app.utils.JwtUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @ClassName WxLoginController
@@ -19,7 +26,7 @@ import java.io.IOException;
  * Version 0.0.1
  */
 @Controller
-@RequestMapping("/wx")
+@RequestMapping("wx")
 public class WxLoginController {
     @Value("${spring.wechat.appid}")
     private String appid;
@@ -29,6 +36,12 @@ public class WxLoginController {
 
     @Value("${spring.wechat.callback}")
     private String http;
+
+    @Autowired
+    private JwtUtils jwtUtils;
+
+    @Autowired
+    private AppUserService appUserService;
 
     @GetMapping("/login")
     public String wxlogin() {
@@ -63,22 +76,23 @@ public class WxLoginController {
         JSONObject userInfoJson = HttpClientUtils.httpGet(url);
         System.out.println("UserInfo:" + userInfoJson);
 
-
         // 微信帐号做来一个关联，来关联我们的账号体系
+        AppUserEntity user = new AppUserEntity();
+        user.setOpenid(openId);
+        user.setState(0);
+        //保存用户信息
+        appUserService.save(user);
         // 此处实现自己的保存用户信息逻辑
-        return "redirect:/gohome?openid=" + openId;
+        return "redirect:/wx/gohome?openid=" + openId;
     }
 
-//    @GetMapping("/gohome")
-//    public String gohome(String openid, ModelMap map) {
-//        WXUser userEntity = wxUserService.getModel(openid);
-//        if (StringUtils.isEmpty(userEntity.getPhone())) {
-//            return "redirect:/register?openid=" + openid; // 重定向到注册接口
-//        } else {
-//            map.put("openid", openid);
-//            return "/home";  // 打开首页
+    @GetMapping("/gohome")
+    public R gohome(String openid, ModelMap map) {
+        //生成token
+        String token = jwtUtils.generateToken(appUserService.login(openid));
+            return R.ok().put("token", token).put("expire", jwtUtils.getExpire()).put("home", "/home");  // 打开首页
 //        }
-//    }
+    }
 
     @GetMapping("/register")
     public String register(String openid, ModelMap map) {

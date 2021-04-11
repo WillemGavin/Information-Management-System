@@ -3,6 +3,7 @@ package io.volunteer.modules.app.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.volunteer.common.utils.PageUtils;
 import io.volunteer.modules.app.entity.AppUserEntity;
+import io.volunteer.modules.app.form.LoginForm;
 
 import java.util.Map;
 
@@ -16,5 +17,15 @@ import java.util.Map;
 public interface AppUserService extends IService<AppUserEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+
+    AppUserEntity queryByOpenId(String openId);
+
+    /**
+     * 用户登录
+     * @param form    登录表单
+     * @return        返回用户ID
+     */
+    long login(String openId);
 }
 
