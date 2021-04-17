@@ -42,7 +42,9 @@ spring:
   wechat:
     appid: wx0b5a62e7a4e2f001
     appsecret: c06b259b05d0ded343e4d642c4cf9945
-    callback: http://byoihpp.nat.ipyingshe.com:26895/fudan/wx/wxcallback
+
+    callback: http://biki.wiki/api/fudan/wx/wxcallback
+#    callback: http://byoihpp.nat.ipyingshe.com:26895/fudan/wx/wxcallback
 
 #mybatis
 mybatis-plus:
