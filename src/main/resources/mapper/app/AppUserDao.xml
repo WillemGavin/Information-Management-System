@@ -15,5 +15,13 @@
         <result property="state" column="state"/>
     </resultMap>
 
+    <select id="countBytask" resultType="java.lang.Long">
+        select
+            COUNT(*)
+        from
+            app_user, volunteer_team
+        where app_user.team_id = volunteer_team.team_id
+            and task_id = #{taskId}
+    </select>
 
 </mapper>

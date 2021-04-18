@@ -5,6 +5,7 @@ import io.volunteer.modules.app.entity.AppUserEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.volunteer.modules.app.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 用户
@@ -16,4 +17,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AppUserDao extends BaseMapper<AppUserEntity> {
 
+    long countBytask(@Param("taskId") Integer taskId);
 }

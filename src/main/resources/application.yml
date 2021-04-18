@@ -40,8 +40,8 @@ spring:
 #  resources:
 #    add-mappings: false
   wechat:
-    appid: wx0b5a62e7a4e2f001
-    appsecret: c06b259b05d0ded343e4d642c4cf9945
+    appid: wxf7773c48baab281c
+    appsecret: 38080938d37f387d9ca525ce78d5e8ea
 
     callback: http://biki.wiki/api/fudan/wx/wxcallback
 #    callback: http://byoihpp.nat.ipyingshe.com:26895/fudan/wx/wxcallback

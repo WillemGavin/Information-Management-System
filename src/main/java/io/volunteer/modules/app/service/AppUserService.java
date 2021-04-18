@@ -19,13 +19,20 @@ public interface AppUserService extends IService<AppUserEntity> {
     PageUtils queryPage(Map<String, Object> params);
 
 
-    AppUserEntity queryByOpenId(String openId);
+    AppUserEntity queryByMobile(String mobile);
 
     /**
      * 用户登录
      * @param form    登录表单
      * @return        返回用户ID
      */
-    long login(String openId);
+    long login(AppUserEntity appUserEntity);
+
+    /**
+     * 计算参与此活动的人数
+     * @param taskId
+     * @return
+     */
+    long countBytask(int taskId);
 }
 

@@ -3,6 +3,8 @@ package io.volunteer.modules.app.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import io.volunteer.common.exception.RRException;
+import io.volunteer.modules.app.utils.JwtUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +29,8 @@ public class AppUserController {
     @Autowired
     private AppUserService appUserService;
 
+    @Autowired
+    private JwtUtils jwtUtils;
     /**
      * 列表
      */
@@ -56,9 +60,9 @@ public class AppUserController {
     @PostMapping("/save")
 //    @RequiresPermissions("volunteer:appuser:save")
     public R save(@RequestBody AppUserEntity appUser){
-		appUserService.saveOrUpdate(appUser);
-
-        return R.ok();
+		Long userId = appUserService.login(appUser);
+        String token = jwtUtils.generateToken(userId);
+        return R.ok().put("userId", userId).put("token", token);
     }
 
     /**

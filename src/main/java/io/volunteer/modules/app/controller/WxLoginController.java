@@ -79,20 +79,21 @@ public class WxLoginController {
         JSONObject userInfoJson = HttpClientUtils.httpGet(url);
         System.out.println("UserInfo:" + userInfoJson);
 
-        AppUserEntity appUserEntity = appUserService.queryByOpenId(openId);
+//        AppUserEntity appUserEntity = appUserService.queryByOpenId(openId);
         // 微信帐号做来一个关联，来关联我们的账号体系
-        if(appUserEntity == null){
-
-            AppUserEntity user = new AppUserEntity();
-            user.setOpenid(openId);
-            user.setState(0);
-            //保存用户信息
-            appUserService.saveOrUpdate(user);
-        }
-        Long userId = appUserService.login(openId);
-        String token = jwtUtils.generateToken(appUserService.login(openId));
+//        if(appUserEntity == null){
+//
+//            AppUserEntity user = new AppUserEntity();
+//            user.setOpenid(openId);
+//            user.setState(0);
+//            //保存用户信息
+//            appUserService.saveOrUpdate(user);
+//        }
+//        Long userId = appUserService.login(openId);
+//        String token = jwtUtils.generateToken(appUserService.login(openId));
         // 此处实现自己的保存用户信息逻辑
-        return "redirect:http://biki.wiki/?userId=" + userId + "&token=" + token;
+//        return "redirect:http://biki.wiki/?userId=" + userId + "&token=" + token;
+        return "";
     }
 
 //    @GetMapping("/gohome")
