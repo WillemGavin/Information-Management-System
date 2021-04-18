@@ -26,7 +26,7 @@ import io.volunteer.common.utils.R;
  * @date 2021-03-31 16:12:41
  */
 @RestController
-@RequestMapping("volunteer/exam")
+@RequestMapping("/volunteer/exam")
 public class ExamController {
     @Autowired
     private ExamService examService;
