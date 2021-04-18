@@ -35,7 +35,7 @@ public class TeamController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("volunteer:team:list")
+//    @RequiresPermissions("volunteer:team:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = teamService.queryPage(params);
 
