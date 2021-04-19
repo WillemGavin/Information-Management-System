@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import io.volunteer.common.exception.RRException;
+import io.volunteer.modules.app.annotation.Login;
 import io.volunteer.modules.app.utils.JwtUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class AppUserController {
     /**
      * 信息
      */
+    @Login
     @RequestMapping("/info/{userId}")
 //    @RequiresPermissions("volunteer:appuser:info")
     public R info(@PathVariable("userId") Long userId){
@@ -68,8 +70,9 @@ public class AppUserController {
     /**
      * 修改
      */
+    @Login
     @RequestMapping("/update")
-    @RequiresPermissions("volunteer:appuser:update")
+//    @RequiresPermissions("volunteer:appuser:update")
     public R update(@RequestBody AppUserEntity appUser){
 		appUserService.updateById(appUser);
 

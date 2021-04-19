@@ -47,7 +47,7 @@ public class TaskController {
      * 信息
      */
     @RequestMapping("/info/{taskId}")
-    @RequiresPermissions("volunteer:task:info")
+//    @RequiresPermissions("volunteer:task:info")
     public R info(@PathVariable("taskId") Integer taskId){
 		TaskEntity task = taskService.getById(taskId);
 

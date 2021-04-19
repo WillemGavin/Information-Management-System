@@ -9,8 +9,10 @@
 package io.volunteer.modules.app.resolver;
 
 import io.volunteer.modules.app.annotation.LoginUser;
+import io.volunteer.modules.app.entity.AppUserEntity;
 import io.volunteer.modules.app.entity.UserEntity;
 import io.volunteer.modules.app.interceptor.AuthorizationInterceptor;
+import io.volunteer.modules.app.service.AppUserService;
 import io.volunteer.modules.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
@@ -29,11 +31,11 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 @Component
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
     @Autowired
-    private UserService userService;
+    private AppUserService userService;
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.getParameterType().isAssignableFrom(UserEntity.class) && parameter.hasParameterAnnotation(LoginUser.class);
+        return parameter.getParameterType().isAssignableFrom(AppUserEntity.class) && parameter.hasParameterAnnotation(LoginUser.class);
     }
 
     @Override
@@ -46,7 +48,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
         }
 
         //获取用户信息
-        UserEntity user = userService.getById((Long)object);
+        AppUserEntity user = userService.getById((Long)object);
 
         return user;
     }

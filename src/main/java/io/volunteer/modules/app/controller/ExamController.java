@@ -3,6 +3,8 @@ package io.volunteer.modules.app.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import io.swagger.annotations.ApiOperation;
+import io.volunteer.modules.app.annotation.Login;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,8 +36,10 @@ public class ExamController {
     /**
      * 列表
      */
+    @Login
     @RequestMapping("/list")
-    @RequiresPermissions("volunteer:exam:list")
+    @ApiOperation("获取试题信息")
+//    @RequiresPermissions("volunteer:exam:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = examService.queryPage(params);
 
@@ -46,8 +50,9 @@ public class ExamController {
     /**
      * 信息
      */
+    @Login
     @RequestMapping("/info/{examId}")
-    @RequiresPermissions("volunteer:exam:info")
+//    @RequiresPermissions("volunteer:exam:info")
     public R info(@PathVariable("examId") Integer examId){
 		ExamEntity exam = examService.getById(examId);
 
@@ -57,6 +62,7 @@ public class ExamController {
     /**
      * 保存
      */
+    @Login
     @RequestMapping("/save")
     @RequiresPermissions("volunteer:exam:save")
     public R save(@RequestBody ExamEntity exam){
@@ -68,6 +74,7 @@ public class ExamController {
     /**
      * 修改
      */
+    @Login
     @RequestMapping("/update")
     @RequiresPermissions("volunteer:exam:update")
     public R update(@RequestBody ExamEntity exam){
@@ -79,6 +86,7 @@ public class ExamController {
     /**
      * 删除
      */
+    @Login
     @RequestMapping("/delete")
     @RequiresPermissions("volunteer:exam:delete")
     public R delete(@RequestBody Integer[] examIds){

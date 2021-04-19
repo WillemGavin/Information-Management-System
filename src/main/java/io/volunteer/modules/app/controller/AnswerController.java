@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import io.volunteer.modules.app.annotation.Login;
 import io.volunteer.modules.app.service.RankService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +39,9 @@ public class AnswerController {
     /**
      * 列表
      */
+    @Login
     @RequestMapping("/list")
-    @RequiresPermissions("volunteer:answer:list")
+//    @RequiresPermissions("volunteer:answer:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = answerService.queryPage(params);
 
@@ -50,8 +52,9 @@ public class AnswerController {
     /**
      * 信息
      */
+    @Login
     @RequestMapping("/info/{examId}")
-    @RequiresPermissions("volunteer:answer:info")
+//    @RequiresPermissions("volunteer:answer:info")
     public R info(@PathVariable("examId") Integer examId){
 		AnswerEntity answer = answerService.getById(examId);
 
@@ -61,6 +64,7 @@ public class AnswerController {
     /**
      * 保存
      */
+    @Login
     @RequestMapping("/save")
 //    @RequiresPermissions("volunteer:answer:save")
     public R save(@RequestBody List<AnswerEntity> answers){
@@ -73,8 +77,9 @@ public class AnswerController {
     /**
      * 修改
      */
+    @Login
     @RequestMapping("/update")
-    @RequiresPermissions("volunteer:answer:update")
+//    @RequiresPermissions("volunteer:answer:update")
     public R update(@RequestBody AnswerEntity answer){
 		answerService.updateById(answer);
 
@@ -92,11 +97,13 @@ public class AnswerController {
         return R.ok();
     }
 
+    @Login
     @RequestMapping("/personRank")
     public R personRank(){
         return R.ok().put("rank", rankService.getPersonalRank());
     }
 
+    @Login
     @RequestMapping("/teamRank")
     public R teamRank(){
         return R.ok().put("rank", rankService.getTeamRank());

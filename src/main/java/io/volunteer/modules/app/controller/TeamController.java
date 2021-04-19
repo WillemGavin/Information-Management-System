@@ -47,7 +47,7 @@ public class TeamController {
      * 信息
      */
     @RequestMapping("/info/{teamId}")
-    @RequiresPermissions("volunteer:team:info")
+//    @RequiresPermissions("volunteer:team:info")
     public R info(@PathVariable("teamId") Integer teamId){
 		TeamEntity team = teamService.getById(teamId);
 
