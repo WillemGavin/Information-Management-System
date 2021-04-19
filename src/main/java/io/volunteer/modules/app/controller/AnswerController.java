@@ -39,9 +39,9 @@ public class AnswerController {
     /**
      * 列表
      */
-    @Login
+//    @Login
     @RequestMapping("/list")
-//    @RequiresPermissions("volunteer:answer:list")
+    @RequiresPermissions("volunteer:answer:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = answerService.queryPage(params);
 
@@ -52,9 +52,9 @@ public class AnswerController {
     /**
      * 信息
      */
-    @Login
+//    @Login
     @RequestMapping("/info/{examId}")
-//    @RequiresPermissions("volunteer:answer:info")
+    @RequiresPermissions("volunteer:answer:info")
     public R info(@PathVariable("examId") Integer examId){
 		AnswerEntity answer = answerService.getById(examId);
 
@@ -89,6 +89,7 @@ public class AnswerController {
     /**
      * 删除
      */
+//    @Login
     @RequestMapping("/delete")
     @RequiresPermissions("volunteer:answer:delete")
     public R delete(@RequestBody Integer[] answerIds){
@@ -97,13 +98,11 @@ public class AnswerController {
         return R.ok();
     }
 
-    @Login
     @RequestMapping("/personRank")
     public R personRank(){
         return R.ok().put("rank", rankService.getPersonalRank());
     }
 
-    @Login
     @RequestMapping("/teamRank")
     public R teamRank(){
         return R.ok().put("rank", rankService.getTeamRank());

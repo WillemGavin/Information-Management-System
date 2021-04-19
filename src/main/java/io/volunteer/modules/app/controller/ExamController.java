@@ -36,7 +36,7 @@ public class ExamController {
     /**
      * 列表
      */
-    @Login
+//    @Login
     @RequestMapping("/list")
     @ApiOperation("获取试题信息")
 //    @RequiresPermissions("volunteer:exam:list")
@@ -50,7 +50,7 @@ public class ExamController {
     /**
      * 信息
      */
-    @Login
+//    @Login
     @RequestMapping("/info/{examId}")
 //    @RequiresPermissions("volunteer:exam:info")
     public R info(@PathVariable("examId") Integer examId){
@@ -62,7 +62,7 @@ public class ExamController {
     /**
      * 保存
      */
-    @Login
+//    @Login
     @RequestMapping("/save")
     @RequiresPermissions("volunteer:exam:save")
     public R save(@RequestBody ExamEntity exam){
@@ -74,7 +74,7 @@ public class ExamController {
     /**
      * 修改
      */
-    @Login
+//    @Login
     @RequestMapping("/update")
     @RequiresPermissions("volunteer:exam:update")
     public R update(@RequestBody ExamEntity exam){
@@ -86,7 +86,7 @@ public class ExamController {
     /**
      * 删除
      */
-    @Login
+//    @Login
     @RequestMapping("/delete")
     @RequiresPermissions("volunteer:exam:delete")
     public R delete(@RequestBody Integer[] examIds){
