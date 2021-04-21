@@ -26,12 +26,13 @@
 
     <select id="getTeamRank" resultMap="rankMap">
         select
-            team_name, app_user.team_id, SUM(grade) as score
+            team_name, app_user.team_id, SUM(grade)/COUNT(DISTINCT  app_user.user_id) as score
         from
             volunteer_answer, app_user, volunteer_team
         where volunteer_answer.user_id = app_user.user_id
           and app_user.team_id = volunteer_team.team_id
-        group by app_user.team_id
-        order by score DESC
+        group by volunteer_answer.user_id,app_user.team_id
+        order by score
+        DESC
     </select>
 </mapper>

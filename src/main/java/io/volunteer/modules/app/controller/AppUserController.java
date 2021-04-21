@@ -70,9 +70,9 @@ public class AppUserController {
     /**
      * 修改
      */
-    @Login
+//    @Login
     @RequestMapping("/update")
-//    @RequiresPermissions("volunteer:appuser:update")
+    @RequiresPermissions("volunteer:appuser:update")
     public R update(@RequestBody AppUserEntity appUser){
 		appUserService.updateById(appUser);
 
